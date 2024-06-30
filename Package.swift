@@ -5,10 +5,11 @@ import PackageDescription
 
 let package = Package(
     name: "CloudKitSyncMonitor",
+    defaultLocalization: "en",
     // platforms is set so you can include this package in projects that target iOS 13/macOS 10.15/tvOS 13 without
     // getting errors, but the code in it is marked avaliable only for macOS 11 and iOS 14.
     // It compiles and the tests pass on tvOS 14, but I haven't used it in a tvOS app.
-    platforms: [.macOS(.v10_15), .iOS(.v13), .watchOS(.v7), .tvOS(.v13)],
+    platforms: [.macOS(.v12), .iOS(.v15), .watchOS(.v8), .tvOS(.v15), .macCatalyst(.v14)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -25,7 +26,10 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "CloudKitSyncMonitor",
-            dependencies: []),
+            dependencies: [],
+            resources: [
+                .process("Localizable.xcstrings")
+            ]),
         .testTarget(
             name: "CloudKitSyncMonitorTests",
             dependencies: ["CloudKitSyncMonitor"]),
