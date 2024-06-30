@@ -94,7 +94,7 @@ import CloudKit
 @available(iOS 15.0, macCatalyst 15.0, OSX 12, tvOS 15.0, watchOS 8, *)
 public class SyncMonitor: ObservableObject {
     /// A singleton to use
-    public static let shared = SyncMonitor()
+    nonisolated(unsafe) public static let shared = SyncMonitor()
 
     // MARK: - Summary properties -
 
